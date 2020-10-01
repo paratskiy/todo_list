@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'haml', '~> 5.1', '>= 5.1.2'
 # Ffaker generates dummy data.
 gem 'ffaker', '~> 2.14'
-
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '~> 4.7', '>= 4.7.3'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
