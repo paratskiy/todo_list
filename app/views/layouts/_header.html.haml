@@ -1,6 +1,9 @@
 %nav.navbar.navbar-expand-lg.navbar-light.bg-light.d-flex.justify-content-between
-  = link_to 'Todo list', '#', class: 'navbar-brand'
+  = link_to 'Todo list', :root, class: 'navbar-brand'
   %ul.navbar-nav
-    %li.nav-item= link_to 'Home', '#', class: 'nav-link'
-    %li.nav-item= link_to 'Log in', '#', class: 'nav-link'
+    - if user_signed_in?
+      %li.nav-item= link_to 'Edit profile', edit_user_registration_path, class: 'nav-link'
+      %li.nav-item= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link'
+    - else
+      %li.nav-item= link_to 'Log in', new_user_session_path, class: 'nav-link'    
     
