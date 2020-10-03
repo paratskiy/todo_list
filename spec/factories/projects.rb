@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :project do
-    name { "MyString" }
-    user { nil }
+    name { FFaker::Lorem.sentence }
+    user
   end
 end
