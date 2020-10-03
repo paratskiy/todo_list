@@ -61,4 +61,9 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  it 'associated projects should be destroyed' do
+    user.projects.create!(name: 'Test')
+    expect { user.destroy }.to change { Project.count }.by(-1)
+  end
 end
