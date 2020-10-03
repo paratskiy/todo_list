@@ -1,4 +1,8 @@
 .container.text-center
   .d-flex.flex-column.justify-content-center.align-items-center
     %h1 Welcome to the Todo list
-    = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg"
+    - if user_signed_in? && @projects.any?
+      = render @projects
+    - else
+      = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg"
+      
