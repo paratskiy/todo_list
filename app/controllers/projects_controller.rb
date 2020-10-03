@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, only: %i[create destroy]
+
   def index
     @projects = current_user.projects
   end
@@ -14,6 +16,20 @@ class ProjectsController < ApplicationController
       redirect_to :root
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      flash[:success] = 'Project updated!'
+      redirect_to :root
+    else
+      render 'edit'
     end
   end
 
