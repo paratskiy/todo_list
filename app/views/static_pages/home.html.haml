@@ -1,10 +1,12 @@
 .container.text-center
   .d-flex.flex-column.justify-content-center.align-items-center
-    %h1 Welcome to the Todo list
-    - if user_signed_in?
-      - if @projects.any?
-        = render @projects
-      = link_to "Create project", new_project_path, class: "btn btn-lg"
-    - else
-      = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg"
+    .content
+      %h1 Welcome to the Todo list
+      - if user_signed_in?
+        = render 'shared/error_messages'
+        - if @projects.any?
+          = render @projects
+        = link_to "Create project", new_project_path, class: "btn btn-lg", remote: true
+      - else
+        = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg"
       
