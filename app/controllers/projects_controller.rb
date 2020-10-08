@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: %i[create destroy]
   before_action :set_project, only: %i[edit update destroy]
-  after_action :set_errors, only: %i[create update]
+  after_action only: %i[create update] do
+    set_errors(@project)
+  end
 
   def index
     @projects = current_user.projects
@@ -63,9 +65,5 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name)
-  end
-
-  def set_errors
-    session[:errors] = @project.errors.full_messages
   end
 end
