@@ -11,10 +11,6 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.new
-    respond_to do |format|
-      format.html { redirect_to :root }
-      format.js
-    end
   end
 
   def create
