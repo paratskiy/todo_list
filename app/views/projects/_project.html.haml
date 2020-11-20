@@ -1,0 +1,7 @@
+%div{class: "project-name-#{project.id}"}
+  = project.name
+  = link_to "edit", edit_project_path(project), remote: true
+  = link_to "delete", project, method: :delete, data: { confirm: "You sure?" }, remote: true
+  - if project.tasks.any?
+    = render project.tasks
+  = link_to "Create task", new_task_path(project: {id: project.id}), class: "btn btn-lg", remote: true
